@@ -1,6 +1,7 @@
 import os
-os.system('pip install hikari, hikari-lightbulb, python-dotenv, tasks')
-os.system('cls')
+# install base libraries, comment out the os.system lines after running
+# os.system('powershell pip install hikari, hikari-lightbulb, python-dotenv, tasks')
+# os.system('cls')
 import hikari
 from lightbulb.ext import tasks
 from dotenv import load_dotenv
@@ -42,9 +43,9 @@ def create_bot() -> lightbulb.BotApp:
 
         # bot.reload_extensions('TestBot.Music.Commands')
 
-    bot.load_extensions_from("./TestBot/Commands")
-    # bot.load_extensions_from("./TestBot/Tasks")
-    bot.load_extensions_from("./TestBot/Listeners")
+    bot.load_extensions_from("./botName/Commands")
+    # bot.load_extensions_from("./botName/Tasks")
+    bot.load_extensions_from("./botName/Listeners")
 
     # Loads tasks and autostart tasks will start
     tasks.load(bot)
