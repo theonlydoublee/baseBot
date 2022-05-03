@@ -1,7 +1,10 @@
+import os
+os.system('pip install hikari, hikari-lightbulb, python-dotenv, tasks')
+os.system('cls')
 import hikari
 from lightbulb.ext import tasks
 from dotenv import load_dotenv
-import lightbulb, os
+import lightbulb
 
 # https://github.com/parafoxia/hikari-intro/blob/main/lightbulb_bot/__main__.py
 
