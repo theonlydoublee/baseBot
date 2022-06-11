@@ -4,7 +4,6 @@ import lightbulb, hikari
 plugin = lightbulb.Plugin("statusUpdater")
 
 
-# @plugin.command
 @tasks.task(s=30, auto_start=True)
 async def statusUpdater():
     print('Task Ran')
