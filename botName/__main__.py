@@ -7,23 +7,15 @@ from lightbulb.ext import tasks
 from dotenv import load_dotenv
 import lightbulb
 
-# https://github.com/parafoxia/hikari-intro/blob/main/lightbulb_bot/__main__.py
-
-# Create a new message
-# await pluginName.bot.rest.create_message(ctx.channel_id, "Create New Message")
-
+rootFile = next(i for i in os.listdir(os.getcwd()) if 'bot' in i.lower())
 
 def create_bot() -> lightbulb.BotApp:
     # load TOKEN and GUILDS from .env file
     load_dotenv()
     TOKEN = os.getenv("TOKEN")
-    # GUILDS = (int(os.getenv("GUILD1")),
-    #           # int(os.getenv("GUILD2"))
-    #           )
 
     bot = lightbulb.BotApp(
         token=TOKEN,
-        # default_enabled_guilds=GUILDS,
         help_slash_command=True,
     )
 
@@ -41,11 +33,9 @@ def create_bot() -> lightbulb.BotApp:
             bot.reload_extensions(c)
         await ctx.respond(content='Reloaded the plugins', flags=hikari.MessageFlag.EPHEMERAL)
 
-        # bot.reload_extensions('TestBot.Music.Commands')
-
-    bot.load_extensions_from("./botName/Commands")
-    # bot.load_extensions_from("./botName/Tasks")
-    bot.load_extensions_from("./botName/Listeners")
+    bot.load_extensions_from(f"./{rootFile}/Commands")
+    # bot.load_extensions_from("./{rootFile}/Tasks")
+    bot.load_extensions_from(f"./{rootFile}/Listeners")
 
     # Loads tasks and autostart tasks will start
     tasks.load(bot)
